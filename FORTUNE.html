@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Digital Fortune Teller 🔮</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #1a1a2e, #000);
+      color: #fff;
+      text-align: center;
+      padding: 50px;
+    }
+
+    .main {
+      margin-bottom: 30px;
+    }
+
+    #button {
+      background-color: #6a0dad;
+      color: #fff;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 10px #a855f7;
+    }
+
+    #button:hover {
+      background-color: #9333ea;
+      box-shadow: 0 0 20px #d8b4fe;
+    }
+
+    #result {
+      margin-top: 30px;
+      padding: 20px;
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 20px #9333ea;
+    }
+
+    h2 {
+      color: #fbbf24;
+      text-shadow: 0 0 10px #fbbf24;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="main">
+    <h1>🔮 DIGITAL FORTUNE TELLER 🔮</h1>
+    <p>Click the button to reveal your fortune of the day!</p>
+    <button id="button">Reveal My Fortune</button>
+  </div>
+
+  <div id="result"></div>
+
+  <script>
+    // GSAP animations for smooth entry
+    gsap.from(".main", { duration: 1, y: "-100%", ease: "bounce" });
+
+    // --- Fortunes ---
+    const fortunes = [
+      "You will achieve something great today!",
+      "An opportunity is coming — be ready!",
+      "Someone will surprise you with kindness.",
+      "Hard work will pay off soon.",
+      "A new skill will open big doors for you.",
+      "Your path is shining brighter than before.",
+      "A challenge you face will turn into a victory.",
+      "Today you will find peace in small things.",
+      "Someone far away is thinking about you.",
+      "Your energy will attract something good today."
+    ];
+
+    // --- Jesus messages ---
+    const jesusMessages = [
+      "Jesus says: 'Come to me, all you who are weary, and I will give you rest.' (Matthew 11:28)",
+      "Jesus reminds you: 'With God, all things are possible.' (Matthew 19:26)",
+      "Fear not, for Jesus walks beside you today.",
+      "Let your heart not be troubled; believe in Him and have peace.",
+      "Jesus is working behind the scenes for your breakthrough.",
+      "When you feel weak, remember: His grace is sufficient for you.",
+      "The Lord has a purpose for every step you take today.",
+      "You are chosen and loved beyond measure.",
+      "Trust Jesus — He turns every delay into divine timing.",
+      "Keep faith strong; Jesus never leaves your side."
+    ];
+
+    // --- Quotes ---
+    const quotes = [
+      "Believe you can and you’re halfway there.",
+      "Dream big. Start small. Act now.",
+      "Stay positive, work hard, make it happen.",
+      "Don’t watch the clock — do what it does. Keep going.",
+      "Great things never come from comfort zones.",
+      "Consistency beats talent when talent doesn’t work hard.",
+      "Doubt kills more dreams than failure ever will.",
+      "Start where you are, use what you have, do what you can.",
+      "Focus on progress, not perfection.",
+      "Discipline is the bridge between goals and success."
+    ];
+
+    // --- Helper functions ---
+    function getRandomNumber(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function getRandomFortune(list) {
+      return list[Math.floor(Math.random() * list.length)];
+    }
+
+    // --- Button event ---
+    document.getElementById("button").addEventListener("click", () => {
+      const luckyNum = getRandomNumber(1, 99);
+      const fortune = getRandomFortune(fortunes);
+      const jesus = getRandomFortune(jesusMessages);
+      const quote = getRandomFortune(quotes);
+
+      const resultDiv = document.getElementById("result");
+      resultDiv.innerHTML = `
+        <h2>🔮 Your Fortune 🔮</h2>
+        <p><strong>🍀 Lucky Number:</strong> ${luckyNum}</p>
+        <p><strong>💫 Fortune:</strong> ${fortune}</p>
+        <p><strong>✝️ Jesus Message:</strong> ${jesus}</p>
+        <p><strong>💭 Quote:</strong> ${quote}</p>
+      `;
+
+      // Smooth fade animation for results
+      gsap.from("#result", { opacity: 0, y: 30, duration: 1 });
+    });
+  </script>
+</body>
+</html>
+git push -u origin main
